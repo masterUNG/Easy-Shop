@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg27">
 
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/call"
+        android:id="@+id/imageView5"
+        android:layout_alignParentRight="true" />
+
     <TextView
         android:text="TextView"
         android:layout_width="wrap_content"
@@ -50,6 +57,7 @@
                 android:id="@+id/textView11"
                 android:textSize="@dimen/h2"
                 android:textColor="@color/aText" />
+
         </LinearLayout>
     </LinearLayout>
 

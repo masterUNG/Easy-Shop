@@ -149,7 +149,7 @@ public class ShowListView extends AppCompatActivity {
                     iconStrings[i] = jsonObject.getString(columnStrings[4]);
                     categoryStrings[i] = jsonObject.getString(columnStrings[5]);
                     latStrings[i] = jsonObject.getString(columnStrings[6]);
-                    latStrings[i] = jsonObject.getString(columnStrings[7]);
+                    lngStrings[i] = jsonObject.getString(columnStrings[7]);
 
                     //Show Log
 
