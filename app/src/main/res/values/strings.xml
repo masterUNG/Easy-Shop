@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Easy Shop</string>
+
+    <string name="cat1">ซ่อมบำรุง</string>
+    <string name="cat2">อัดฉีด</string>
+    <string name="cat3">ต่อ พรบ</string>
+
+
 </resources>
