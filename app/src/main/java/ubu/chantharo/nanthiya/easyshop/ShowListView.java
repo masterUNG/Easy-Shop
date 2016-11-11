@@ -2,8 +2,8 @@ package ubu.chantharo.nanthiya.easyshop;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +15,9 @@ import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class ShowListView extends AppCompatActivity {
 
@@ -75,6 +78,19 @@ public class ShowListView extends AppCompatActivity {
 
         //Explicit
         private Context context;
+        private String[] columnStrings = new String[]{
+                "id",
+                "Name",
+                "Detail",
+                "Phone",
+                "Image",
+                "Category",
+                "Lat",
+                "Lng"};
+
+        private String[] nameStrings, detailStrings,
+                phoneStrings, iconStrings, categoryStrings,
+                latStrings, lngStrings;
 
         public SynShop(Context context) {
             this.context = context;
@@ -108,6 +124,46 @@ public class ShowListView extends AppCompatActivity {
             super.onPostExecute(s);
 
             Log.d("11novV1", "JSON ==> " + s);
+
+            try {
+
+                JSONArray jsonArray = new JSONArray(s);
+
+                nameStrings = new String[jsonArray.length()];
+                detailStrings = new String[jsonArray.length()];
+                phoneStrings = new String[jsonArray.length()];
+                iconStrings = new String[jsonArray.length()];
+                categoryStrings = new String[jsonArray.length()];
+                latStrings = new String[jsonArray.length()];
+                lngStrings = new String[jsonArray.length()];
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+
+                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+
+                    nameStrings[i] = jsonObject.getString(columnStrings[1]);
+                    detailStrings[i] = jsonObject.getString(columnStrings[2]);
+                    phoneStrings[i] = jsonObject.getString(columnStrings[3]);
+                    iconStrings[i] = jsonObject.getString(columnStrings[4]);
+                    categoryStrings[i] = jsonObject.getString(columnStrings[5]);
+                    latStrings[i] = jsonObject.getString(columnStrings[6]);
+                    latStrings[i] = jsonObject.getString(columnStrings[7]);
+
+                    //Show Log
+
+
+                }   // for
+
+                //Create ListView
+                MyAdapter myAdapter = new MyAdapter(context, nameStrings,
+                        detailStrings, phoneStrings, iconStrings);
+                listView.setAdapter(myAdapter);
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
 
         }   // onPost
 
